@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 {% load static %}
 <head>
   <meta charset="utf-8">
@@ -7,28 +7,163 @@
   <meta name="description" content="">
   <meta name="author" content="Tadaka Surya Teja">
   <title>Tadaka Surya Teja</title>
-  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+h2 {
+  vertical-align: center;
+  text-align: center;
+}
 
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+* {
+  font-family: "Raleway";
+  box-sizing: border-box;
+}
+
+.top-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu > li {
+  margin: 0 1rem;
+}
+
+.menu-button-container {
+  display: none;
+  height: 100%;
+  width: 30px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+  display: block;
+  background-color: black;
+  position: absolute;
+  height: 4px;
+  width: 30px;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+}
+
+.menu-button::before {
+  content: '';
+  margin-top: -8px;
+}
+
+.menu-button::after {
+  content: '';
+  margin-top: 8px;
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::before {
+  margin-top: 0px;
+  transform: rotate(405deg);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button {
+  background: black;
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::after {
+  margin-top: 0px;
+  transform: rotate(-405deg);
+}
+
+@media (max-width: 700px) {
+  .menu-button-container {
+    display: flex;
+  }
+  .menu {
+    position: absolute;
+    top: 0;
+    margin-top: 50px;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  #menu-toggle ~ .menu li {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  #menu-toggle:checked ~ .menu li {
+    border: 1px solid black;
+    height: 2.5em;
+    padding: 0.5em;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .menu > li {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    color: black;
+    background-color: black;
+  }
+  .menu > li:not(:last-child) {
+    border-bottom: 1px solid #444;
+  }
+}
+    </style>
 </head>
 <body>
+    <nav class="navbar sticky-top navbar-light bg-light">
 
-<nav class="navbar sticky-top navbar-light bg-light">
+<section class="top-nav">
       <a class="navbar-brand" href="{% url 'home' %}">Tadaka Surya Teja</a>
-      <a class="nav-item nav-link active" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="{% url 'about' %}">About</a>
-      <a class="nav-item nav-link" href="#">Experience</a>
-      <a class="nav-item nav-link" href="#">Education</a>
-      <a class="nav-item nav-link" href="#">Skills</a>
-      <a class="nav-item nav-link" href="#">Certificates</a>
-      <a class="nav-item nav-link" href="#">Blogs</a>
-      <a class="nav-item nav-link" href="#">Projects</a>
-      <a class="nav-item nav-link" href="#">Hobbies</a>
-      <a class="nav-item nav-link" href="#">Contact Me</a>
 
-</nav>
+    <input id="menu-toggle" type="checkbox" />
+    <label class='menu-button-container' for="menu-toggle">
+    <div class='menu-button'></div>
+  </label>
+
+    <ul class="menu">
+      <li><a class="nav-item nav-link active" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a></li>
+      <li><a class="nav-item nav-link" href="{% url 'about' %}">About</a></li>
+      <li><a class="nav-item nav-link" href="#">Experience</a></li>
+      <li><a class="nav-item nav-link" href="#">Education</a></li>
+      <li><a class="nav-item nav-link" href="#">Skills</a></li>
+      <li><a class="nav-item nav-link" href="#">Certificates</a></li>
+      <li><a class="nav-item nav-link" href="#">Blogs</a></li>
+      <li><a class="nav-item nav-link" href="#">Projects</a></li>
+      <li><a class="nav-item nav-link" href="#">Hobbies</a></li>
+      <li><a class="nav-item nav-link" href="#">Contact me</a></li>
+
+    </ul>
+  </section>
+    </nav>
+
+
 {% block content %}
 {% endblock %}
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
