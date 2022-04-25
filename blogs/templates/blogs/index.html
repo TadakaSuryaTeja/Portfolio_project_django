@@ -35,4 +35,29 @@
     </div>
 </div>
 
+
+<div class="album py-5 bg-light">
+    <div class="container">
+        <h1>Projects</h1>
+        <div class="row">
+            {% for projects in projects.all|slice:":6" %}
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <a href="{% url 'detail' projects.id %}">
+                        <img class="card-img-top" src="{{projects.image.url}}" width="1000" height="250">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text"> {{ projects.summary}}</p>
+                        <a href="{% url 'detail' projects.id %}">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
 {% endblock %}

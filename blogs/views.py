@@ -2,14 +2,15 @@ from django.shortcuts import render, get_object_or_404
 
 from django.http import HttpResponse
 
-from .models import Blogs
+from .models import Blogs, Projects
 
 
 # Create your views here.
 
 def index(request):
     blogs = Blogs.objects
-    return render(request, 'blogs/index.html', {'blogs': blogs})
+    projects = Projects.objects
+    return render(request, 'blogs/index.html', {'blogs': blogs, 'projects': projects})
 
 
 def detail(request, blogs_id):
