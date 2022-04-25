@@ -1,43 +1,38 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
-<main role="main">
-
-  <section class="jumbotron text-center">
+<section class="jumbotron text-center">
     <div class="container">
-      <h1 class="jumbotron-heading">Tadaka Surya Teja</h1>
-      <p class="lead text-muted">I am a software engineer based in Hyderabad, India. I am a self-taught programmer, and I am passionate about learning new technologies and building cool stuff. I love to solve problems and I am always open to learn new things.</p>
-      <p>
-        <a href="mailto:suryateja233@gmail.com" class="btn btn-primary my-2">Email us</a>
-        <a href="https://github.com/TadakaSuryaTeja" class="btn btn-info my-2">Github</a>
-      </p>
+        <h1 class="jumbotron-heading">Tadaka Surya Teja</h1>
+        <p class="lead text-muted">I am a software engineer based in Hyderabad, India. I am a self-taught programmer, and I am passionate about learning new technologies and building cool stuff. I love to solve problems and I am always open to learn new things.</p>
+        <p>
+            <a href="mailto:suryateja233@gmail.com" class="btn btn-primary my-2">Email us</a>
+            <a href="https://github.com/TadakaSuryaTeja" class="btn btn-info my-2">Github</a>
+        </p>
     </div>
-  </section>
+</section>
 
-  <div class="album py-5 bg-light">
+<div class="album py-5 bg-light">
     <div class="container">
-      <h1>Blogs</h1>
-      <div class="row">
-        {% for blogs in blogs.all|slice:":6" %}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <a href="{% url 'detail' blogs.id %}">
-              <img class ="card-img-top" src="{{blogs.image.url}}" width="1000" height="250">
-            </a>
-            <div class="card-body">
-              <p class="card-text"> {{ blog.summary}}</p>
-                <a href="{% url 'detail' blogs.id %}">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                </a>
+        <h1>Blogs</h1>
+        <div class="row">
+            {% for blogs in blogs.all|slice:":6" %}
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <a href="{% url 'detail' blogs.id %}">
+                        <img class="card-img-top" src="{{blogs.image.url}}" width="1000" height="250">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text"> {{ blog.summary}}</p>
+                        <a href="{% url 'detail' blogs.id %}">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        </a>
+                    </div>
+                </div>
+
             </div>
-          </div>
-
+            {% endfor %}
         </div>
-        {% endfor %}
-      </div>
     </div>
-  </div>
+</div>
 
-</main>
 {% endblock %}
-
