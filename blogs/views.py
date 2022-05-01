@@ -16,3 +16,8 @@ def index(request):
 def detail(request, blogs_id):
     blogs_details = get_object_or_404(Blogs, pk=blogs_id)
     return render(request, 'blogs/detail.html', {'blogs': blogs_details})
+
+
+def project_details(request, projects_id):
+    projects_details = get_object_or_404(Projects, pk=projects_id)
+    return render(request, 'blogs/projects.html', {'projects': projects_details})

@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% block content %}
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Projects</h1>
+        <p class="lead text-muted"> {{ projects.summary}}.</p>
+        <img src=" {{ projects.image.url }}" height=300></img>
+        <p>
+            <a href="{% url 'home' %}" class="btn btn-primary my-2">Back</a>
+        </p>
+    </div>
+</section>
+
+<div class="album py-5 bg-light">
+    <div class="container">
+
+        <div class="row">
+            {% for projects in projects.all %}
+
+            <div class="col-md-4">
+
+                <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top" src="{{projects.image.url}}">
+                    <div class="card-body">
+                        <p class="card-text"> {{ projects.summary}}</p>
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
