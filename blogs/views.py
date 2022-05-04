@@ -21,3 +21,7 @@ def detail(request, blogs_id):
 def project_details(request, projects_id):
     projects_details = get_object_or_404(Projects, pk=projects_id)
     return render(request, 'blogs/projects.html', {'projects': projects_details})
+
+
+def signup_form(request):
+    return render(request, 'blogs/signup.html')
