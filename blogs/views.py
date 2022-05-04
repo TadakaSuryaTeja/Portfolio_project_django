@@ -24,4 +24,8 @@ def project_details(request, projects_id):
 
 
 def signup_form(request):
-    return render(request, 'blogs/signup.html')
+    return render(request, 'blogs/sign_up.html')
+
+
+def hire_me(request):
+    return render(request, 'blogs/hire_me.html')
