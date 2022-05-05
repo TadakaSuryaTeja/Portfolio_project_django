@@ -92,54 +92,61 @@ I have done my B. Tech from Vardhaman College of Engineering, Hyderabad with a s
     </div>
 </section>
 
-
-<div class="album py-5 bg-light" id="blogs">
+<div class="wrapper">
+  <h1>Blogs</h1>
+  <div class="cols">
     <div class="container">
-        <h1>Blogs</h1>
         <div class="row">
-            {% for blogs in blogs.all|slice:":6" %}
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <a href="{% url 'detail' blogs.id %}">
-                        <img class="card-img-top" src="{{blogs.image.url}}" width="1000" height="250">
-                    </a>
-                    <div class="card-body">
-                        <p class="card-text"> {{ blog.summary}}</p>
-                        <a href="{% url 'detail' blogs.id %}">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                        </a>
-                    </div>
-                </div>
+            {% for blogs in blogs.all|slice:":3" %}
+            <div class="col">
+                <a href="{% url 'detail' blogs.id %}">
 
-            </div>
+				<div class="container">
+					<div class="front" style="background-image: url('{{blogs.image.url}}')">
+						<div class="inner">
+							<p>{{ blogs.summary}}</p>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+                            <p>{{ blogs.summary}}</p>
+						</div>
+					</div>
+				</div>
+                </a>
+			</div>
             {% endfor %}
-        </div>
+		</div>
     </div>
+  </div>
 </div>
 
-
-<div class="album py-5 bg-light" id="projects">
+<div class="wrapper">
+  <h1>Projects</h1>
+  <div class="cols">
     <div class="container">
-        <h1>Projects</h1>
         <div class="row">
-            {% for projects in projects.all|slice:":6" %}
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <a href="{% url 'project_details' projects.id %}">
-                        <img class="card-img-top" src="{{projects.image.url}}" width="1000" height="250">
-                    </a>
-                    <div class="card-body">
-                        <p class="card-text"> {{ projects.summary}}</p>
-                        <a href="{% url 'project_details' projects.id %}">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
+            {% for projects in projects.all|slice:":3" %}
+            <div class="col">
+                <a href="{% url 'project_details' projects.id %}">
+				<div class="container">
+					<div class="front" style="background-image: url('{{projects.image.url}}')">
+						<div class="inner">
+							<p>{{ projects.summary}}</p>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+                            <p>{{ projects.summary}}</p>
+						</div>
+					</div>
+				</div>
+                </a>
+			</div>
             {% endfor %}
-        </div>
+		</div>
     </div>
+  </div>
 </div>
 
 <section class="jumbotron text-center" id="hobbies">
@@ -156,6 +163,7 @@ I have done my B. Tech from Vardhaman College of Engineering, Hyderabad with a s
 
 <section class="jumbotron text-center" id = "contactus">
     <div class="container">
+
         <h1 class="jumbotron-heading">Contact me</h1>
         <p>
             <a href="#" class="btn btn-primary my-2">Linkedin</a>
@@ -169,7 +177,17 @@ I have done my B. Tech from Vardhaman College of Engineering, Hyderabad with a s
         <p>
             <a href="#" class="btn btn-primary my-2">Kaggle</a>
         </p>
+        <!-- ================== -->
+        <!-- Google Map Element -->
+        <section class="google-map">
+            <div class="map-frame">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2148.5441034736186!2d113.90571038290093!3d22.25793180820957!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x340158f577d8e91d%3A0x771695466285a370!2sAsian%20Institute%20of%20Applied%20Buddhism%2C%20Lotus%20Pond%20Temple!5e0!3m2!1sen!2shk!4v1595793486587!5m2!1sen!2shk" width="300" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </section>
+        <!-- Google Map Element -->
+        <!-- ================== -->
     </div>
+
 </section>
 
 {% endblock %}

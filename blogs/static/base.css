@@ -1,124 +1,272 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway);
-h2 {
-    vertical-align: center;
-    text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+h1{
+  font-size: 2.5rem;
+  font-family: 'Montserrat';
+  font-weight: normal;
+color: #444;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.wrapper{
+  width: 90%;
+  margin: 0 auto;
+  max-width: 80rem;
+}
+
+.cols{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.col{
+  width: calc(25% - 2rem);
+  margin: 1rem;
+}
+
+.container{
+  transform-style: preserve-3d;
+	perspective: 1000px;
+}
+
+.front,
+.back{
+  background-size: cover;
+	background-position: center;
+	transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	backface-visibility: hidden;
+	text-align: center;
+	min-height: 280px;
+	height: auto;
+	border-radius: 10px;
+	color: #fff;
+	font-size: 1.5rem;
+}
+
+.back{
+  background: #cedce7;
+  background: -moz-linear-gradient(45deg,  #cedce7 0%, #596a72 100%);
+  background: -webkit-linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
+  background: linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
+}
+
+.front:after{
+	position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    content: '';
+    display: block;
+    opacity: .6;
+    background-color: #000;
+    backface-visibility: hidden;
+    border-radius: 10px;
+}
+.container:hover .front,
+.container:hover .back{
+    transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.back{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.inner{
+    transform: translateY(-50%) translateZ(60px) scale(0.94);
+    top: 50%;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    box-sizing: border-box;
+    outline: 1px solid transparent;
+    perspective: inherit;
+    z-index: 2;
+}
+
+.container .back{
+    transform: rotateY(180deg);
+    transform-style: preserve-3d;
+}
+
+.container .front{
+    transform: rotateY(0deg);
+    transform-style: preserve-3d;
+}
+
+.container:hover .back{
+  transform: rotateY(0deg);
+  transform-style: preserve-3d;
+}
+
+.container:hover .front{
+  transform: rotateY(-180deg);
+  transform-style: preserve-3d;
+}
+
+.front .inner p{
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.front .inner p:after{
+  content: '';
+  width: 4rem;
+  height: 2px;
+  position: absolute;
+  background: #C6D4DF;
+  display: block;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: -.75rem;
+}
+
+.front .inner span{
+  color: rgba(255,255,255,0.7);
+  font-family: 'Montserrat';
+  font-weight: 300;
+}
+
+@media screen and (max-width: 64rem){
+  .col{
+    width: calc(33.333333% - 2rem);
+  }
+}
+
+@media screen and (max-width: 48rem){
+  .col{
+    width: calc(50% - 2rem);
+  }
+}
+
+@media screen and (max-width: 32rem){
+  .col{
+    width: 100%;
+    margin: 0 0 2rem 0;
+  }
+}
+
+
+:root {
+    /* Font Color */
+    --light-theme: #f8f9fa;
+
+    /* Circle Width */
+    --circle-diameter: 300px;
+
+    /* Font Family */
+    --fonts-style-x: 'neuzeit-grotesk', sans-serif;
+    --fonts-style-y: 'neuzeit-grotesk', sans-serif;
+
+    /* Font Weight */
+    --light: 300;
+    --regular: 400;
+    --bold: 700;
+    --black: 900;
+
+}
+
+
+/* ------------- */
+/* Basic Setting */
+/* ------------- */
 
 html,
 body {
-    margin: 0;
-    height: 100%;
-}
-
-* {
-    font-family: "Raleway";
     box-sizing: border-box;
+    font-family: 'neuzeit-grotesk', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1em;
+    line-height: 1.5;
+    color: #ffffffee;
+    scroll-behavior: smooth;
 }
 
-.top-nav {
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+main {
+    position: relative;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.menu {
-    display: flex;
-    flex-direction: row;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.menu>li {
-    margin: 0 1rem;
-}
-
-.menu-button-container {
-    display: none;
-    height: 100%;
-    width: 30px;
-    cursor: pointer;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100vh;
+    min-height: 640px;
+    background-color: var(--light-theme);
 }
 
-#menu-toggle {
-    display: none;
+::selection {
+    color: #fff;
+    background-color: var(--light-theme);
 }
 
-.menu-button,
-.menu-button::before,
-.menu-button::after {
-    display: block;
-    background-color: black;
+
+/* ------------- */
+/* Content Style */
+/* ------------- */
+
+.google-map {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--circle-diameter);
+    height: var(--circle-diameter);
+    overflow: hidden;
+    border-radius: var(--circle-diameter);
+    background-color: #eee;
+    transition: 5000ms;
+    cursor: grab;
+}
+
+/*
+.google-map::after {
+    content: "";
     position: absolute;
-    height: 4px;
-    width: 30px;
-    transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
-    border-radius: 2px;
+    width: var(--circle-diameter);
+    height: var(--circle-diameter);
+    border-radius: var(--circle-diameter);
+    background: radial-gradient(circle, #ffffff00 0%, #f8f9fa 50%);
+    pointer-events: none;
+}
+*/
+
+.google-map .map-frame {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--light-theme);
 }
 
-.menu-button::before {
-    content: '';
-    margin-top: -8px;
+.google-map iframe {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: visibleStroke;
 }
 
-.menu-button::after {
-    content: '';
-    margin-top: 8px;
-}
 
-#menu-toggle:checked+.menu-button-container .menu-button::before {
-    margin-top: 0px;
-    transform: rotate(405deg);
-}
+/* ------------------ */
+/* Interactive Effect */
+/* ------------------ */
 
-#menu-toggle:checked+.menu-button-container .menu-button {
-    background: black;
-}
-
-#menu-toggle:checked+.menu-button-container .menu-button::after {
-    margin-top: 0px;
-    transform: rotate(-405deg);
-}
-
-@media (max-width: 700px) {
-    .menu-button-container {
-        display: flex;
-    }
-    .menu {
-        position: absolute;
-        top: 0;
-        margin-top: 50px;
-        left: 0;
-        flex-direction: column;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-    }
-    #menu-toggle~.menu li {
-        height: 0;
-        margin: 0;
-        padding: 0;
-        border: 0;
-        transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
-    }
-    #menu-toggle:checked~.menu li {
-        border: 1px solid black;
-        height: 2.5em;
-        padding: 0.5em;
-        transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
-    }
-    .menu>li {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        color: black;
-        background-color: black;
-    }
-    .menu>li:not(:last-child) {
-        border-bottom: 1px solid #444;
-    }
+.google-map:hover {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
 }
