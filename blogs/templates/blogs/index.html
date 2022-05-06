@@ -92,7 +92,7 @@ I have done my B. Tech from Vardhaman College of Engineering, Hyderabad with a s
     </div>
 </section>
 
-<div class="wrapper">
+<div class="wrapper" id="blogs">
   <h1>Blogs</h1>
   <div class="cols">
     <div class="container">
@@ -100,7 +100,6 @@ I have done my B. Tech from Vardhaman College of Engineering, Hyderabad with a s
             {% for blogs in blogs.all|slice:":3" %}
             <div class="col">
                 <a href="{% url 'detail' blogs.id %}">
-
 				<div class="container">
 					<div class="front" style="background-image: url('{{blogs.image.url}}')">
 						<div class="inner">
@@ -121,7 +120,7 @@ I have done my B. Tech from Vardhaman College of Engineering, Hyderabad with a s
   </div>
 </div>
 
-<div class="wrapper">
+<div class="wrapper" id="projects">
   <h1>Projects</h1>
   <div class="cols">
     <div class="container">
