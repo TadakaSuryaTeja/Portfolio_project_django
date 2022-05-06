@@ -1,0 +1,35 @@
+
+    .container {
+
+      /*outline: 1px solid red;*/
+      border: 5px solid transparent;
+      box-sizing: border-box;
+    }
+
+    .demo {
+      background-image:
+        linear-gradient(white, white),
+        linear-gradient(270deg, #00D7B9, #B95DD7 50%, #FFB367 100%);
+
+      background-repeat: no-repeat;
+      background-origin: padding-box, border-box;
+      text-align: center;
+    }
+
+    .animated {
+      background-image:
+        linear-gradient(white, white),
+        linear-gradient(180deg, cornflowerblue, purple 50%, cornflowerblue);
+
+      background-repeat: no-repeat;
+      background-size: 100% 100%, 100% 200%;
+      background-position: 0 0, 0 100%;
+      background-origin: padding-box, border-box;
+      animation: highlight 1s infinite alternate;
+    }
+
+    @keyframes highlight {
+      100% {
+        background-position: 0 0, 0 0;
+      }
+    }

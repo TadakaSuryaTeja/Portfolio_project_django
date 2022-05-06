@@ -1,0 +1,23 @@
+.showcase{
+height: 100%;
+width: 100%;
+position: relative;
+}
+
+.showcase video{
+height: 100%;
+width: 100%;
+position: absolute;
+top: 0;
+left: 0;
+object-fit: cover;
+}
+
+.title{
+height: 100%;
+width: 100%;
+background-color: #000;
+font-size: 60px;
+color: #fff;
+mix-blend-mode: multiply;
+}
